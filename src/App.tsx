@@ -9,35 +9,35 @@ type Pizza = {
   tag: string;
 };
 
-const whatsappNumber = "5543996619529";
+const whatsappNumber = "5500000000000";
 
 const pizzas: Pizza[] = [
   {
-    name: "Margherita D'Oro",
-    description: "Molho de tomates, mozzarella fresca, manjericao e azeite aromatizado.",
+    name: "Marguerita D'Oro",
+    description: "Molho de tomates, muçarela fresca, manjericão e azeite aromatizado.",
     price: "R$ 48,00",
-    tag: "Classica",
+    tag: "Clássica",
     image:
       "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=80",
   },
   {
-    name: "Pepperoni Nero",
-    description: "Pepperoni artesanal, mozzarella, oregano e borda levemente tostada.",
+    name: "Pepperoni da Casa",
+    description: "Pepperoni artesanal, muçarela, orégano e borda levemente tostada.",
     price: "R$ 56,00",
     tag: "Mais pedida",
     image:
       "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80",
   },
   {
-    name: "Quattro Formaggi",
-    description: "Mozzarella, gorgonzola, parmesao, provolone e toque de mel.",
+    name: "Quatro Queijos",
+    description: "Muçarela, gorgonzola, parmesão, provolone e toque de mel.",
     price: "R$ 62,00",
     tag: "Especial",
     image:
       "https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=900&q=80",
   },
   {
-    name: "Caprese Rustica",
+    name: "Caprese Rústica",
     description: "Tomate confit, pesto, burrata cremosa e folhas frescas.",
     price: "R$ 64,00",
     tag: "Fresca",
@@ -70,7 +70,7 @@ type CartProps = {
 
 function SelectionCart({ items, orderUrl, onChangeAmount, onRemove }: CartProps) {
   const totalItems = items.reduce((sum, item) => sum + item.amount, 0);
-  const label = totalItems === 0 ? "Nenhuma pizza" : `${totalItems} pizza${totalItems === 1 ? "" : "s"}`;
+  const label = totalItems === 0 ? "Nenhuma pizza selecionada" : `${totalItems} pizza${totalItems === 1 ? "" : "s"}`;
 
   return (
     <aside className="h-fit rounded-lg border border-[#2f281d] bg-[#11100d] p-5 shadow-[0_24px_60px_rgba(0,0,0,0.24)] lg:sticky lg:top-6">
@@ -103,7 +103,7 @@ function SelectionCart({ items, orderUrl, onChangeAmount, onRemove }: CartProps)
             </div>
           ))
         ) : (
-          <p className="text-sm leading-6 text-[#9d927f]">Escolha pizzas no menu para montar uma consulta.</p>
+          <p className="text-sm leading-6 text-[#9d927f]">Escolha pizzas no cardápio para montar uma consulta.</p>
         )}
       </div>
       <a
@@ -157,9 +157,9 @@ function App() {
     const lines =
       selectedPizzas.length > 0
         ? selectedPizzas.map(({ pizza, amount }) => `- ${amount}x ${pizza.name} (${pizza.price})`)
-        : ["Gostaria de conhecer o cardapio de pizzas."];
+        : ["Gostaria de conhecer o cardápio de pizzas."];
     const message = [
-      "Ola, vim pelo site da Pizzaria D'Oro.",
+      "Olá, vim pelo site da Pizzaria D'Oro.",
       "Tenho interesse em:",
       ...lines,
       "Pode me apresentar tamanhos, adicionais e prazo de entrega?",
@@ -224,14 +224,14 @@ function App() {
                   Sabor artesanal
                 </p>
                 <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-[1.02] md:text-6xl xl:text-7xl">
-                  Taste the rich flavor of high quality pizza.
+                  Pizzas artesanais com sabor de forno.
                 </h1>
                 <p className="mt-5 max-w-2xl text-base leading-8 text-[#c9bda8]">
-                  Um conceito visual para pizzarias premium, com cardapio, selecao de itens e
-                  contato direto pelo WhatsApp.
+                  Escolha suas pizzas favoritas, monte seu pedido com calma e fale com a nossa equipe
+                  para confirmar tamanhos, adicionais e entrega.
                 </p>
                 <a href="#menu" className="mt-8 inline-flex rounded-lg bg-[#d2a64f] px-6 py-3 text-sm font-black text-[#0a0907]">
-                  Ver menu
+                  Ver cardápio
                 </a>
               </div>
             </div>
@@ -241,11 +241,11 @@ function App() {
         <section id="menu" className="px-5 py-14 md:px-10 lg:px-16">
           <div>
               <div className="mb-8 text-center">
-                <p className="text-xs font-bold uppercase tracking-[0.32em] text-[#d2a64f]">Today special</p>
+                <p className="text-xs font-bold uppercase tracking-[0.32em] text-[#d2a64f]">Especiais da casa</p>
                 <h2 className="mt-3 font-serif text-4xl text-[#f8efe0]">Pizzas especiais</h2>
               </div>
 
-              <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 md:gap-5 xl:grid-cols-4">
                 {pizzas.map((pizza) => {
                   const amount = selected[pizza.name] ?? 0;
 
